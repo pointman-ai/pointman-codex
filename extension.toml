@@ -1,0 +1,12 @@
+# Codex CLI: a client agents run on (kind `client`). `pointman add codex` installs npm's package on every
+# node that has none, in the node's own folder; a copy a person installed themselves stays theirs.
+
+[extension]
+id = "codex"
+name = "Codex CLI"
+version = "0.1.1"
+publisher = "aurelio"
+summary = "OpenAI's coding agent: agents spawned as codex run on it."
+
+[client]
+npm = "@openai/codex"

@@ -1,12 +1,34 @@
-# Codex CLI: a client agents run on (kind `client`). `pointman add codex` installs npm's package on every
-# node that has none, in the node's own folder; a copy a person installed themselves stays theirs.
+# Codex CLI: a client agents run on (kind `client`; James, thread 10399 [10869]). `pm add codex` installs it on
+# every node that has none, from OpenAI's release on GitHub; one a person installed stays theirs. [client] v2
+# (AGC-17) describes the node's built-in Codex (node/src/clientspec), which must agree with it.
+# Format: docs/dev/extensions.md.
 
 [extension]
 id = "codex"
 name = "Codex CLI"
-version = "0.1.1"
+version = "0.2.0"
 publisher = "aurelio"
 summary = "OpenAI's coding agent: agents spawned as codex run on it."
 
 [client]
-npm = "@openai/codex"
+npm = "@openai/codex"                       # where its newest version is said
+binaries = ["codex"]
+protocol = "codex-exec"                     # exec --json
+home_env = "CODEX_HOME"                     # each agent's own home
+api_keys = ["OPENAI_API_KEY", "CODEX_API_KEY"]   # never passed to a run: runs are on its own login
+
+[client.install]
+from = "release"                            # checked against GitHub's sha-256
+repo = "openai/codex"
+asset = "codex-{triple}.tar.gz"
+
+[client.sign_in]
+how = "codex login"
+check = ["login", "status"]
+
+[client.mcp]
+via = "config-file"                         # its servers in config.toml, in each agent's home
+file = "config.toml"
+key = "mcp_servers"
+rename = { headers = "http_headers" }
+drop = ["type"]

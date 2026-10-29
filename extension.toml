@@ -6,7 +6,7 @@
 [extension]
 id = "codex"
 name = "Codex CLI"
-version = "0.2.0"
+version = "0.2.1"
 publisher = "aurelio"
 summary = "OpenAI's coding agent: agents spawned as codex run on it."
 

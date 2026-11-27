@@ -1,6 +1,6 @@
 # Icon source
 
-The vendor mark is used to identify its coding client in Pointman.
+The vendor mark is used to identify its coding harness in Pointman.
 
 Source: https://avatars.githubusercontent.com/u/14957082 (OpenAI's GitHub organisation avatar)
 
